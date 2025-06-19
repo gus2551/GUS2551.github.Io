@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SerieFibonacci</title>
+    <style>
+        body {
+            background-color: brown;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            font-style: oblique;
+            color: aliceblue;
+        }
+        .Contenido {
+            background: aliceblue;
+            width: 170px;
+            height: 100px;
+            color: rgb(4, 184, 184);
+            padding: 50px;
+            margin: auto;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button {
+            width: 70px;
+            height: 45px;
+            border-radius: 5px;
+        }
+        .input {
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        .resultado{
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Serie Fibonacci</h1>
+    <div class="Contenido">
+        <input type="number" id="Numero" placeholder="Numero" class="input">
+        <button type="button" onclick="Calcular()" class="button">Calcular</button>
+
+        <h1 id="Resultado" class="resultado"></h1>
+        <h1 id="Suma" class="resultado"></h1>
+    </div>
+</body>
+
+</html>
+<script>
+    function Calcular() {
+        let Numero = document.getElementById("Numero").value;
+
+        if (isNaN(Numero) || Numero < 1) {
+            alert("Digite Numero y mayor a 1")
+        }
+
+        let primero = 0;
+        let Segundo = 1;
+        let tercero;
+
+        let Resultado = "";
+        let Suma = 0;
+
+        for (let i = 0; i < Numero; i++) {
+            Resultado += primero + " ";
+            Suma += primero;
+
+            tercero = primero + Segundo;
+            primero = Segundo;
+            Segundo = tercero;
+        }
+        document.getElementById("Resultado").textContent = Resultado.trim();
+        document.getElementById("Suma").textContent = Suma;
+    }
+
+
+</script>
