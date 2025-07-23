@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+    <!-- SweetAlert2 -->
+    <!-- sweetalert/1.1.3 -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            position: relative;
+            overflow: hidden;
+            background-color: #e9f7ef; /* Verde claro de fondo */
+          
+            font-weight: bold;
+        }
+        .text-center{
+         font-weight: bold;
+}
+        
+
+        /* Contenedor de burbujas */
+        .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+            /* Burbujas animadas */
+            .bubbles span {
+                position: absolute;
+                bottom: -50px;
+                width: 30px;
+                height: 30px;
+                background-color: rgba(0, 128, 0, 0.6); /* Verde semitransparente */
+                border-radius: 50%;
+                animation: floatUp 6s infinite linear;
+                opacity: 0.7;
+            }
+
+        /* Animación de burbujas */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Burbujas con tamaños, colores y tiempos aleatorios */
+        .bubbles span:nth-child(1) {
+            left: 10%;
+            animation-duration: 6s;
+            background-color: rgba(34, 139, 34, 0.5);
+            width: 25px;
+            height: 25px;
+        }
+
+        .bubbles span:nth-child(2) {
+            left: 20%;
+            animation-duration: 5s;
+            background-color: rgba(0, 255, 127, 0.5);
+            width: 30px;
+            height: 30px;
+        }
+
+        .bubbles span:nth-child(3) {
+            left: 30%;
+            animation-duration: 7s;
+            background-color: rgba(50, 205, 50, 0.5);
+            width: 35px;
+            height: 35px;
+        }
+
+        .bubbles span:nth-child(4) {
+            left: 40%;
+            animation-duration: 4.5s;
+            background-color: rgba(144, 238, 144, 0.5);
+            width: 28px;
+            height: 28px;
+        }
+
+        .bubbles span:nth-child(5) {
+            left: 50%;
+            animation-duration: 6.5s;
+            background-color: rgba(60, 179, 113, 0.5);
+            width: 22px;
+            height: 22px;
+        }
+
+        .bubbles span:nth-child(6) {
+            left: 60%;
+            animation-duration: 5.5s;
+            background-color: rgba(46, 139, 87, 0.5);
+            width: 32px;
+            height: 32px;
+        }
+
+        .bubbles span:nth-child(7) {
+            left: 70%;
+            animation-duration: 4s;
+            background-color: rgba(152, 251, 152, 0.5);
+            width: 38px;
+            height: 38px;
+        }
+
+        .bubbles span:nth-child(8) {
+            left: 80%;
+            animation-duration: 5.2s;
+            background-color: rgba(0, 250, 154, 0.5);
+            width: 26px;
+            height: 26px;
+        }
+
+        .bubbles span:nth-child(9) {
+            left: 90%;
+            animation-duration: 6.8s;
+            background-color: rgba(0, 128, 0, 0.5);
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Estilo de la tarjeta de login */
+        .card {
+            width: 300px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .imag {
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            border: 2px solid #ccc;
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .imag:hover {
+                transform: scale(1.1);
+            }
+
+    </style>
+</head>
+
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <!-- Contenedor de burbujas -->
+    <div class="bubbles">
+        <span></span> <span></span> <span></span> <span></span> <span></span> 
+        <span></span> <span></span> <span></span> <span></span>
+    </div>
+
+    <div class="card p-4 shadow-lg">
+        <div class="d-flex justify-content-center mb-3">
+            <img src="./OIP.jpg" alt="Imagen" class="imag" width="160" height="120" />
+        </div>
+        <h5 class="text-center">Ingresar al Formulario</h5><br>
+        <h5 class="text-center">Condigo QR</h5>
+        <form runat="server">
+            <div class="text-center mt-3">   
+             <img src="./qr-code.png" alt="Imagen" width="200" height="180" />
+            </div> 
+        </form>
+        <div class="text-center mt-3">
+            <h5 class="btn btn-success w-100">Univercidad Central de Nicaragua</h5><br>
+          
+        </div>
+    </div>
+
+     <!-- Bootstrap Bundle con Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
