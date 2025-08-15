@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Estudiantes</title>
+    <link href="./EstiloForm.css" rel="stylesheet" />
+    
+       <style>
+        h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 10px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .step.active {
+            background: #28a745;
+            color: white;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .card {
+            width: 35rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        input{
+            width: 90%;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        select {
+            width: 94%;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+
+        
+    </style>
+</head>
+
+<body>
+    <form id="multiStepForm" method="POST" name="multiStepForm" >
+    <div class="container">
+        <img src="./OIP.jpg" alt="Imagen" width="160" height="120" />
+        <h2>Ingresar Asistencia</h2>
+
+        <div class="timeline">
+            <div class="step active">1</div>
+            <div class="step">2</div>
+            <div class="step">3</div>
+        </div>
+
+        <!-- Paso 1 -->
+        <div class="form-section active">
+            <div class="card">
+                <h3>Paso 1: Información del Estudiante</h3>
+                <input type="text" name="Nombres" placeholder="Nombres Completos" required />
+                <input type="text" name="Apellidos" placeholder="Apellidos Completos" required />
+                <input type="text" name="Carnet" placeholder="Carnet" required />
+                <input type="number" name="Edad" placeholder="Edad" required />
+                <input type="number" name="Telefono" placeholder="N° Telefono" required />
+                <select name="Sexo" required>
+                    <option value="">-- Elige Sexo --</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+                <button type="button" onclick="nextStep()">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="form-section">
+            <div class="card">
+                <h3>Paso 2: Información de la Universidad</h3>
+                <label>Participará en el Viaje: </label>
+                <select name="anioAcade" required>
+                    <option value="">-- Elige un Año Académico --</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                </select>
+                <button type="button" onclick="prevStep()">Atrás</button>
+                <button type="button" onclick="nextStep()">Siguiente</button>
+
+            </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="form-section">
+            <div class="card">
+                <h3>Paso 3: Confirmación</h3>
+                <label>Participará en el Viaje: </label>
+                <select name="ParticiparaViaje" required>
+                    <option value="">-- Elige --</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+                <button type="button" onclick="prevStep()">Atrás</button>
+                <button type="submit"  name="submit">Enviar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+let currentStep = 0;
+const steps = document.querySelectorAll(".form-section");
+const stepIndicators = document.querySelectorAll(".step");
+
+function updateForm() {
+    steps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+    });
+    stepIndicators.forEach((step, index) => {
+        step.classList.toggle("active", index <= currentStep);
+    });
+}
+
+function nextStep() {
+    const inputs = steps[currentStep].querySelectorAll("input, select");
+    for (let input of inputs) {
+        if (!input.checkValidity()) {
+            input.reportValidity();
+            return;
+        }
+    }
+    if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateForm();
+    }
+}
+
+function prevStep() {
+    if (currentStep > 0) {
+        currentStep--;
+        updateForm();
+    }
+}
+
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby1D6N_pGwORKwO9HDAY3UbjiOK4TfyR7Gzt6sdUmz14vHaubBnUukkE6ZoDo86XN8/exec';
+  const form = document.forms['multiStepForm'];
+
+  form.addEventListener('submit', e => {
+  e.preventDefault();
+  console.log("Enviando formulario...");
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => {
+      console.log("Respuesta recibida", response);
+      alert("Datos enviados correctamente");
+    })
+    .catch(error => console.error('Error!', error.message));
+});
+</script>
+
+
+
+</body>
+</html>
