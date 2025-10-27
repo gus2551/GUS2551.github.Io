@@ -74,79 +74,6 @@ label {
   font-weight: 600;
 }
 
-input, textarea {
-  width: 95%;
-  margin-top: 5px;
-  padding: 10px;
-  border: 1px solid #00a651;
-  border-radius: 6px;
-  font-size: 1rem;
-  outline: none;
-}
-select{
-  width: 99%;
-  margin-top: 5px;
-  padding: 10px;
-  border: 1px solid #00a651;
-  border-radius: 6px;
-  font-size: 1rem;
-  outline: none;
-
-}
-
-input:focus, textarea:focus, select:focus {
-  border-color: #d2ac2a;
-  box-shadow: 0 0 4px #d2ac2a;
-}
-
-/* Botones */
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-button {
-  background-color: #00a651;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background-color: #005aab;
-}
-
-.submit-btn {
-  background-color: #d2ac2a;
-  color: #003b2a;
-  font-weight: 700;
-}
-
-.submit-btn:hover {
-  background-color: #005aab;
-  color: white;
-}
-
-/* Barra de progreso */
-.progress-container {
-  background-color: #e0e0e0;
-  height: 8px;
-  border-radius: 5px;
-  margin-top: 25px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  background-color: #00a651;
-  height: 8px;
-  width: 25%;
-  transition: width 0.3s ease;
-}
 
 /* Pie de página */
 footer {
@@ -172,22 +99,25 @@ footer {
     <h1>Universidad Central de Nicaragua</h1>
     <h2>Facultad de Ingeniería en Sistemas</h2>
   </header>
-
+ 
   <main>
     <section class="formulario-container">
       <h3>Feria Vocacional - Formulario Interactivo</h3>
 
-      <form id="vocacionalForm">
-       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScTry6ZJFXMN_VAHUev9jckrKHZLiGPOBRDGiC00krPgLrLpg/viewform?embedded=true" 
-         width="900" height="2044" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe> 
-    
-
-      </form>
-       <footer>
+      <form id="vocacionalForm"  method="POST">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScTry6ZJFXMN_VAHUev9jckrKHZLiGPOBRDGiC00krPgLrLpg/viewform?embedded=true" 
+         width="600" height="1900" frameborder="0" marginheight="0" marginwidth="0">Cargando…
+        </iframe> 
+      
+     </form>
+     </main>
+  <footer>
     <p>© 2025 Universidad Central de Nicaragua <br> Facultad de Ingeniería en Sistemas</p>
   </footer>
 </body>
 </html>
+
+
 
 
 
