@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feria Vocacional UCN - Ingeniería en Sistemas</title>
+ <style>
+/* Estilo general */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #003b2a;
+  margin: 0;
+  padding: 0;
+}
+
+/* Encabezado con logo centrado */
+header {
+  background: linear-gradient(90deg, #00a651, #005aab);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+.logo-ucn {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+header h2 {
+  margin: 5px 0 0;
+  font-weight: 400;
+  color: #d2ac2a;
+}
+
+/* Contenedor principal */
+.formulario-container {
+  background-color: #f9f9f9;
+  border: 2px solid #00a651;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.formulario-container h3 {
+  text-align: center;
+  color: #005aab;
+  margin-bottom: 20px;
+}
+
+/* Formulario por pasos */
+.form-step {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.form-step.active {
+  display: block;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  color: #005aab;
+  font-weight: 600;
+}
+
+input, textarea {
+  width: 95%;
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #00a651;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
+select{
+  width: 99%;
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #00a651;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #d2ac2a;
+  box-shadow: 0 0 4px #d2ac2a;
+}
+
+/* Botones */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #00a651;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #005aab;
+}
+
+.submit-btn {
+  background-color: #d2ac2a;
+  color: #003b2a;
+  font-weight: 700;
+}
+
+.submit-btn:hover {
+  background-color: #005aab;
+  color: white;
+}
+
+/* Barra de progreso */
+.progress-container {
+  background-color: #e0e0e0;
+  height: 8px;
+  border-radius: 5px;
+  margin-top: 25px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: #00a651;
+  height: 8px;
+  width: 25%;
+  transition: width 0.3s ease;
+}
+
+/* Pie de página */
+footer {
+  background-color: #005aab;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  margin-top: 30px;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+ </style>
+</head>
+
+<body>
+  <header>
+    <img src="logo.png" alt="Logo UCN" class="logo-ucn">
+    <h1>Universidad Central de Nicaragua</h1>
+    <h2>Facultad de Ingeniería en Sistemas</h2>
+  </header>
+
+  <main>
+    <section class="formulario-container">
+      <h3>Feria Vocacional - Formulario Interactivo</h3>
+
+      <form id="vocacionalForm" action="https://formspree.io/f/xnnojzky" method="POST">
+        
+        <!-- Paso 1 -->
+        <div class="form-step active">
+          <label>Nombre completo:</label>
+          <input type="text" name="nombre_completo" required>
+
+          <label>Nombre de su Colegio:</label>
+          <input type="text" name="colegio" required>
+
+          <label>Departamento:</label>
+             <select name="departamento" required>
+            <option value="">Seleccione turno</option>
+            <option>Managua</option>
+            <option>Tipitapa</option>
+            <option>Ciudad Sandino</option>
+            <option>San Rafael del Sur</option>
+            <option>Villa el Carmen</option>
+            <option>Mateare</option>
+            <option>Ticuantepe</option>
+            <option>El crucero</option>
+            <option>San Francisco Libre</option>
+          </select>
+          <div class="buttons">
+            <button type="button" class="next-btn">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="form-step">
+          <label>Edad:</label>
+          <input type="number" name="edad" min="10" max="100" required>
+
+          <label>¿Por qué te gustaría estudiar Ingeniería en Sistemas?</label>
+          <textarea name="motivo_estudio" rows="3" required></textarea>
+
+          <div class="buttons">
+            <button type="button" class="prev-btn">Atrás</button>
+            <button type="button" class="next-btn">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="form-step">
+          <label>¿Qué te gustó más de nuestra feria vocacional?</label>
+          <textarea name="gusto_feria" rows="3" required></textarea>
+
+          <label>¿Desearías ser parte de nuestra comunidad Universitaria UCN?</label>
+          <select name="desea_unirse" required>
+            <option value="">Seleccione una opción</option>
+            <option>Sí</option>
+            <option>No</option>
+            <option>Tal vez</option>
+          </select>
+
+          <div class="buttons">
+            <button type="button" class="prev-btn">Atrás</button>
+            <button type="button" class="next-btn">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Paso 4 -->
+        <div class="form-step">
+          <label>¿En qué turno te gustaría cursar tu carrera?</label>
+          <select name="turno" required>
+            <option value="">Seleccione turno</option>
+            <option>Regular</option>
+            <option>Sabatino</option>
+            <option>Dominical</option>
+          </select>
+
+          <label>Número de teléfono o tutor:</label>
+          <input type="tel" name="telefono" pattern="[0-9+ ]{8,15}" placeholder="Ejemplo: +505 8888 9999" required>
+
+          <div class="buttons">
+            <button type="button" class="prev-btn">Atrás</button>
+            <button type="submit" class="submit-btn">Enviar formulario</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Barra de progreso -->
+      <div class="progress-container">
+        <div class="progress-bar"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Universidad Central de Nicaragua <br> Facultad de Ingeniería en Sistemas</p>
+  </footer>
+
+  <script>
+    // Script para navegar entre pasos
+    const steps = document.querySelectorAll(".form-step");
+    const nextBtns = document.querySelectorAll(".next-btn");
+    const prevBtns = document.querySelectorAll(".prev-btn");
+    const progressBar = document.querySelector(".progress-bar");
+    let currentStep = 0;
+
+    function updateStep() {
+      steps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+      });
+      progressBar.style.width = ((currentStep + 1) / steps.length) * 100 + "%";
+    }
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          updateStep();
+        }
+      });
+    });
+
+    prevBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateStep();
+        }
+      });
+    });
+
+    updateStep();
+
+
+document.getElementById("vocacionalForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  const url = "https://script.google.com/macros/s/AKfycby1D6N_pGwORKwO9HDAY3UbjiOK4TfyR7Gzt6sdUmz14vHaubBnUukkE6ZoDo86XN8/exec"; 
+  
+  const res = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {"Content-Type": "application/json"}
+  });
+  
+  if (res.ok) alert("Datos enviados correctamente ✅");
+  else alert("Error al enviar ❌");
+});
+
+
+
+  </script>
+</body>
+</html>
